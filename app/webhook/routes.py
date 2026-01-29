@@ -1,6 +1,5 @@
-from flask import Blueprint, json, request
+from flask import Blueprint, request
 from app.extensions import mongo
-from datetime import datetime
 
 webhook = Blueprint('Webhook', __name__, url_prefix='/webhook')
 

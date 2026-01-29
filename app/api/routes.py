@@ -6,11 +6,9 @@ api = Blueprint('api', __name__, url_prefix='/api')
 @api.route('/events', methods=['GET'])
 def get_events():
     try:
-        # Fetch events sorted by timestamp descending (latest first)
+        # Fetch events sorted by timestamp descending
         events = list(mongo.db.events.find().sort('timestamp', -1).limit(50))
-        print(f"Fetched {events} ")
-        # Convert MongoDB documents to JSON
-        # Remove _id field and use request_id instead
+
         for event in events:
             event['_id'] = str(event['_id'])
         
